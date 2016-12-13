@@ -1,28 +1,28 @@
-def mul(A, B):
-    x = A[0][0] * B[0][0] + A[0][1] * B[1][0]
-    y = A[0][0] * B[0][1] + A[0][1] * B[1][1]
-    z = A[1][0] * B[0][0] + A[1][1] * B[1][0]
-    k = A[1][0] * B[0][1] + A[1][1] * B[1][1]
+def Fib(n):
+    Q = [[1, 1], [1, 0]]
+    return pow(Q, n)[0][1] % 10**6
+
+def mul(F, _F):
+    x = F[0][0] * _F[0][0] + F[0][1] * _F[1][0]
+    y = F[0][0] * _F[0][1] + F[0][1] * _F[1][1]
+    z = F[1][0] * _F[0][0] + F[1][1] * _F[1][0]
+    k = F[1][0] * _F[0][1] + F[1][1] * _F[1][1]
 
     return [[x, y], [z, k]]
 
-def pow(A, n):
+def pow(F, n):
     if n == 0:
         return [[1, 0], [0, 1]]
     elif n == 1:
-        return [row[:] for row in A]
+        return [row[:] for row in F]
     else:
         d, r = divmod(n, 2)
-        B = pow(A, d)
-        B = mul(B, B)
+        _F = pow(F, d)
+        _F = mul(_F, _F)
         if r > 0:
-            B = mul(B, A)
-        return B
+            _F = mul(_F, F)
+        return _F
 
-def Fib(n):
-    Q = [[1, 1], [1, 0]]
-    return pow(Q, n)[0][1]
+n = Fib(100)
 
-n = Fib(10)
-
-print(n % 10**6)
+print(n)
