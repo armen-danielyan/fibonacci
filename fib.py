@@ -7,7 +7,6 @@ def mul(F, _F):
     y = F[0][0] * _F[0][1] + F[0][1] * _F[1][1]
     z = F[1][0] * _F[0][0] + F[1][1] * _F[1][0]
     k = F[1][0] * _F[0][1] + F[1][1] * _F[1][1]
-
     return [[x, y], [z, k]]
 
 def pow(F, n):
@@ -23,6 +22,6 @@ def pow(F, n):
             _F = mul(_F, F)
         return _F
 
-n = Fib(100)
+n = Fib(1000)
 
 print(n)
